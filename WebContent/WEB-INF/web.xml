@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>md_web_25443</display-name>
+   <welcome-file-list>
+    <welcome-file>signin1.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>GetLocationsServlet</servlet-name>
+    <servlet-class>com.auca.library.servlet.GetLocationsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetLocationsServlet</servlet-name>
+    <url-pattern>/getLocations</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ViewBooksServlet</servlet-name>
+    <servlet-class>com.auca.library.servlet.ViewBooksServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewBooksServlet</servlet-name>
+    <url-pattern>/ViewBooksServlet</url-pattern>
+  </servlet-mapping>
+</web-app>

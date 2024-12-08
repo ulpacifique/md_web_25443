@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN PAGE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+ <style>
+        @charset "ISO-8859-1";
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            color: aliceblue;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1f;
+            padding: 2rem;
+        }
+
+        .container {
+            position: relative;
+            width: 900px;
+            min-height: 550px;
+            border: 2px solid #2b27ff;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(57, 39, 255, 0.3);
+            overflow: hidden;
+            display: flex;
+            background: rgba(37, 37, 43, 0.95);
+        }
+
+        .form-box {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 100px;
+            margin: 0 auto 1rem;
+            object-fit: contain;
+        }
+
+        .form-box h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #fff, #5d27ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-box input,
+        .input-box select {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 500;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 0 35px 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .input-box select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .input-box option {
+            color: #fff;
+            background-color: #2a2a30;
+            padding: 10px;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+
+        .input-box i {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: 0.3s ease;
+        }
+
+        .input-box input:focus ~ label,
+        .input-box input:valid ~ label,
+        .input-box select:focus ~ label,
+        .input-box select:valid ~ label {
+            top: -5px;
+            font-size: 14px;
+            color: #5d27ff;
+        }
+
+        .input-box input:focus,
+        .input-box select:focus {
+            border-bottom-color: #5d27ff;
+        }
+
+        .input-box input:focus ~ i,
+        .input-box input:valid ~ i,
+        .input-box select:focus ~ i,
+        .input-box select:valid ~ i {
+            color: #5627ff;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #5d27ff;
+            cursor: pointer;
+        }
+
+        .remember-me label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            font-size: 14px;
+            color: #5d27ff;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .forgot-link:hover {
+            color: #7b52ff;
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: transparent;
+            border: 2px solid #6b27ff;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            transition: 0.5s ease;
+        }
+
+        .btn:hover {
+            background: #6b27ff;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(107, 39, 255, 0.4);
+        }
+
+        .error-message {
+            color: #ff4444;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(255, 68, 68, 0.1);
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        .reg-link {
+            font-size: 14px;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .reg-link a {
+            text-decoration: none;
+            color: #5d27ff;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .reg-link a:hover {
+            color: #7b52ff;
+            text-decoration: underline;
+        }
+
+        .info-content {
+            width: 50%;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(43, 39, 255, 0.1), rgba(107, 39, 255, 0.2));
+            border-left: 1px solid rgba(107, 39, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-content h3 {
+            font-size: 32px;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #5d27ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-content p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .features {
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+        }
+
+        .feature-item i {
+            font-size: 24px;
+            color: #5d27ff;
+        }
+
+        .feature-item span {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .form-box, .info-content {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .info-content {
+                border-left: none;
+                border-top: 1px solid rgba(107, 39, 255, 0.3);
+            }
+
+            .form-box h2 {
+                font-size: 28px;
+            }
+
+            .info-content h3 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <img src="auca.png" alt="AUCA Logo" class="logo"/>
+            <h2>Welcome Back</h2>
+            <div id="errorMessage" class="error-message"></div>
+            <form action="SignInServlet" method="post" id="loginForm">
+                <div class="form-section">
+                    <div class="input-box">
+                        <input type="text" id="username" name="username" required>
+                        <label for="username">Username</label>
+                        <i class='bx bx-user'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="password" name="password" required>
+                        <label for="password">Password</label>
+                        <i class='bx bx-lock-alt'></i>
+                    </div>
+                    <div class="input-box">
+                        <select id="role" name="role" required>
+                            <option value="" disabled selected>Select your role</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="HOD">HOD</option>
+                            <option value="Dean">Dean</option>
+                            <option value="Registrar">Registrar</option>
+                            <option value="librarian">librarian</option>
+                            <option value="Manager">Manager</option>
+                        </select>
+                        <label for="role">Role</label>
+                        <i class='bx bx-user-pin'></i>
+                    </div>
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+                <div class="reg-link">
+                    <p>Don't have an account? <a href="register.jsp">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-content">
+            <h3>Welcome to AUCA Library</h3>
+            <p>Access your personalized learning experience</p>
+            <div class="features">
+                <div class="feature-item">
+                    <i class='bx bx-book-open'></i>
+                    <span>Explore Our Collection</span>
+                </div>
+                <div class="feature-item">
+                    <i class='bx bx-message-square-dots'></i>
+                    <span>Reserve Books Online</span>
+                </div>
+                <div class="feature-item">
+                    <i class='bx bx-calendar-check'></i>
+                    <span>Track Your Borrowings</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle URL parameters for error messages
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (error) {
+                errorMessage.textContent = decodeURIComponent(error);
+                errorMessage.classList.add('visible');
+            }
+
+            // Form validation
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function(e) {
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const role = document.getElementById('role').value;
+
+                if (!username || !password || !role) {
+                    e.preventDefault();
+                    errorMessage.textContent = 'Please fill in all fields';
+                    errorMessage.classList.add('visible');
+                    return false;
+                }
+
+                // Handle remember me
+                if (document.getElementById('remember').checked) {
+                    localStorage.setItem('auca_username', username);
+                    localStorage.setItem('auca_role', role);
+                }
+            });
+
+            // Restore remembered values
+            const rememberedUsername = localStorage.getItem('auca_username');
+            const rememberedRole = localStorage.getItem('auca_role');
+            
+            if (rememberedUsername) {
+                document.getElementById('username').value = rememberedUsername;
+                document.getElementById('remember').checked = true;
+            }
+            
+            if (rememberedRole) {
+                document.getElementById('role').value = rememberedRole;
+            }
+        });
+    </script>
+</body>
+</html>

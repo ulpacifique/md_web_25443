@@ -1,0 +1,47 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/auca_library_db</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property> <!-- Leave blank for no password -->
+
+        <!-- JDBC connection pool settings -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+
+        <!-- Specify dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Mention annotated class -->
+        <mapping class="com.auca.library.model.Province"/>
+        <mapping class="com.auca.library.model.District"/>
+        <mapping class="com.auca.library.model.Sector"/>
+        <mapping class="com.auca.library.model.Cell"/>
+        <mapping class="com.auca.library.model.Village"/>
+        <mapping class="com.auca.library.model.Person"/>
+        <mapping class="com.auca.library.model.User"/>
+        <mapping class="com.auca.library.model.Location"/>
+        <mapping class="com.auca.library.model.Book"/>
+        <mapping class="com.auca.library.model.Shelf"/>
+        <mapping class="com.auca.library.model.Room"/>
+        <mapping class="com.auca.library.model.Borrow"/>
+        <mapping class="com.auca.library.model.MembershipRequest"/>
+        <mapping class="com.auca.library.model.Member"/>
+<mapping class="com.auca.library.model.MembershipFee"/>
+<mapping class="com.auca.library.model.MembershipPayment"/>
+<mapping class="com.auca.library.model.MembershipViolation"/>
+    </session-factory>
+</hibernate-configuration>
